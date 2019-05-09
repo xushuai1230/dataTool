@@ -1,0 +1,69 @@
+.menu{
+	width: 100%;
+	height:100%;
+	position: absolute;
+	overflow: hidden;
+	border: none;
+	.toolBar {
+	    height: 32px;
+	    padding: 4px;
+	    overflow: hidden;
+	    border-bottom: 1px solid #c2c2c2;
+	    .bar{
+	    	float: left;
+		    margin-top: 0px;
+		    margin-left: 0px;
+		    margin-right: 6px;
+	    }
+    }
+    .content{
+		width: 100%;
+		position: absolute;
+	    top:32px;
+	    margin: 5px;
+	    bottom: 0;
+	    .contentLeft{
+			width: 20%;
+			height:100%;
+			border: 1px solid #c2c2c2;
+			position: relative;
+			float: left;
+			.leftTop{
+			    position: absolute;
+			    top: 0px;
+			    bottom: 30px;
+			    width: 100%;
+			}
+			.leftbottom{
+                width: 100%;
+			    height: 30px;
+			    position: absolute;
+			    border-bottom: none;
+			    bottom: 0px;
+			}
+		}
+		.contentRight{
+			float: left;
+			width: 79.5%;
+	    	left: 5px;
+			height: 100%;
+			border: 1px solid #c2c2c2;
+			position: relative;
+			overflow-y: auto;
+	        .el-table__body-wrapper {
+	            overflow-y: auto;
+	        }
+	        .operate-group{
+			    border-bottom: 1px solid #cccccc;
+			    overflow: hidden;
+			    height: 32px;
+			    font-size: 12px;
+			}
+			.operate-group .item{
+			    float: left;
+			    margin-top: 0px;
+			    margin-right: 10px;
+			}
+		}
+	}
+}

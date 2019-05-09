@@ -1,0 +1,302 @@
+/*行业数据展示*/
+.IndustryData{/*
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: #E3E3E3;*/
+	/*overflow:auto;*/
+	.elRowStyle{
+		border-bottom: 0px solid #c2c2c2 !important;
+		width: 100%;
+		/*margin-left: 30px !important;*/
+	}
+	.container_title {
+		font-family: "微软雅黑";
+		font-size: 15px;
+		line-height: 20px;
+		border:0px;
+		color: #635C5C;
+		font-weight: bold !important;
+	}
+	.bgsa {
+		border-radius: 10px;
+		width: 80%;
+		height: 40px;
+		margin-top: 8px;
+		text-align: center;
+		background-color: #1da0f0;
+		/* box-shadow: 2px 2px 2px #a8a8a8; */
+	}
+	.bgsa span {
+		line-height: 40px;
+		color: #FFFFFF;
+		/*margin-left: 30px;*/
+		font-size: 14px;
+		font-family: "微软雅黑";
+	}
+	.bgsa_num{
+		margin-left: 0px !important;
+		font-size: 16px;
+	}
+	.chartDiv{
+		border-left:5px solid #ffa897 ; 
+		padding-left: 5px;
+		margin:10px 0px 0px 10px;
+	}
+	.chartDivOne{
+		margin:0px 0px 0px 50px
+	}
+	.chartDivTwo{
+		margin:0px 0px 0px 10px
+	}
+	.containerDiv{
+		border-left:5px solid #ffa897 ; 
+		padding-left: 5px;
+		margin:32px 0px 20px 10px;
+	}
+	.chart{
+		overflow: hidden;
+		zoom:1;
+		background: #f3f3f3;
+		border: 0;
+	}
+	.chart-div {
+		width: 50%;
+	    height: 100%;
+		float: left;
+	    border-right: 10px solid #e3e3e3;
+	    border-bottom: 10px solid #e3e3e3;
+	}
+	.chart-canvas {
+		width: 80%;
+        float: left;
+		background: #f3f3f3;
+		margin-left: 71px;
+	}
+	.canvasStyle{
+		width: 50%;
+	}
+}
+
+.CompanyData{
+    /*padding-left: 30px;
+    padding-right: 30px;
+    background-color: #f2f2f2;*/
+    /*overflow:auto;*/
+    position: initial !important;
+	.chart{
+		background: #f3f3f3;
+		border: 0;
+		overflow: hidden;
+		zoom:1;
+	}
+	.elRowStyle{
+		border-bottom: 0px solid #c2c2c2 !important;
+		width: 100%;
+		/*margin-left: 30px !important;*/
+	}
+	.container_title {
+	    font-family: "微软雅黑";
+	    font-size: 15px;
+	    line-height: 20px;
+	    color: #635C5C;
+	    font-weight: bold !important;
+	}
+    .bgsa {
+		border-radius: 10px;
+		width: 80%;
+		height: 40px;
+		margin-top: 8px;
+		text-align: center;
+		background-color: #1da0f0;
+		/* box-shadow: 2px 2px 2px #a8a8a8; */
+	}
+	.bgsa span {
+		line-height: 40px;
+		color: #FFFFFF;
+		/*margin-left: 20px;*/
+		font-size: 14px;
+		font-family: "微软雅黑";
+	}
+	.bgsa_num{
+		margin-left: 10px !important;
+		font-size: 16px;
+	}
+	.chart-div {
+		width: 50%;
+	    height: 100%;
+	    float: left;
+        /*display: inline-block;*/
+	    border-right: 10px solid #e3e3e3;
+	    border-bottom: 10px solid #e3e3e3;
+	}
+	.chart-canvas {
+		width: 80%;
+        float: left;
+		background: #f3f3f3;
+		margin-left: 71px;
+	}
+    .canvasStyle{
+		width: 569px;
+	    height: 248px !important;
+	}
+	.chartDiv{
+		border-left:5px solid #ffa897 ; 
+		padding-left: 5px;
+		margin:10px 0px 0px 10px;
+	}
+	.chartDivOne{
+		margin:0px 0px 0px 50px
+	}
+	.chartDivTwo{
+		margin:0px 0px 0px 10px
+	}
+	.containerDiv{
+		border-left:5px solid #ffa897 ; 
+		padding-left: 5px;
+		margin:32px 0px 20px 10px;
+	}
+}
+
+.Govreatiuon{
+  /*padding-left: 30px;
+  padding-right: 30px;
+  background-color: #E3E3E3;*/
+  /*overflow:auto;*/
+
+  .chart{
+    background: #f3f3f3;
+    border: 0;
+    overflow: hidden;
+    zoom:1;
+  }
+  .elRowStyle{
+    border-bottom: 0px solid #c2c2c2 !important;
+	width: 100%;
+    /*margin-left: 30px !important;*/
+  }
+  .container_title {
+    font-family: "微软雅黑";
+    font-size: 15px;
+    line-height: 20px;
+    color: #635C5C;
+    font-weight: bold !important;
+  }
+  .bgsa {
+    border-radius: 10px;
+    width: 80%;
+    height: 40px;
+    margin-top: 8px;
+    text-align: center;
+	background-color: #1da0f0;
+    /* box-shadow: 2px 2px 2px #a8a8a8; */
+  }
+  .bgsa span {
+    line-height: 40px;
+    color: #FFFFFF;
+    /*margin-left: 20px;*/
+    font-size: 14px;
+    font-family: "微软雅黑";
+  }
+  .bgsa_num{
+    margin-left: 10px !important;
+    font-size: 16px;
+  }
+  .chart-div {
+	width: 50%;
+    height: 100%;
+    float: left;
+    border-right: 10px solid #e3e3e3;
+    border-bottom: 10px solid #e3e3e3;
+  }
+  .chart-canvas {
+    width: 80%;
+    float: left;
+    background: #f3f3f3;
+    margin-left: 71px;
+  }
+  .canvasStyle{
+    width: 498px;
+    height: 248px !important;
+  }
+	.chartDiv{
+		border-left:5px solid #ffa897 ; 
+		padding-left: 5px;
+		margin:10px 0px 0px 10px;
+	}
+	.chartDivOne{
+		margin:0px 0px 0px 50px
+	}
+	.chartDivTwo{
+		margin:0px 0px 0px 10px
+	}
+	.containerDiv{
+		border-left:5px solid #ffa897 ; 
+		padding-left: 5px;
+		margin:32px 0px 20px 10px;
+	}
+}
+
+.RegionalSearch{
+	/*padding-left: 30px;
+	padding-right: 30px;
+	background-color: #E3E3E3;*/
+	/*overflow:auto;*/
+
+	.allmap {
+		width: 100%;
+		height:300px;
+		overflow: hidden;
+		margin: 0;
+		padding:10px;
+		font-family: "微软雅黑";
+	}
+	.elRowStyle{
+		border-bottom: 0px solid #c2c2c2 !important;
+	}
+	.container_title {
+		font-family: "微软雅黑";
+		font-size: 15px;
+		line-height: 20px;
+		color: #635C5C;
+		font-weight: bold !important;
+	}
+	.chart{
+		background: #f3f3f3;
+		border: 0;
+		overflow: hidden;
+		zoom:1;
+		margin-left: 10px !important;
+		margin-top: 18px;
+	}
+	.mapStyle{
+		height:300px;
+		width:100%;
+		padding: 10px;
+	}
+	.mapCss{
+		width:100%;
+	}
+	.chart-div {
+		width: 50%;
+	    height: 100%;
+	    float: left;
+	    border-right: 10px solid #e3e3e3;
+	    border-bottom: 10px solid #e3e3e3;
+	}
+	.chart-canvas {
+		width: 80%;
+        float: left;
+		background: #f3f3f3;
+		margin-left: 71px;
+	}
+	.canvasStyle{
+		width: 569px;
+		height: 248px !important;
+	}
+	.chartDiv{
+		border-left:5px solid #ffa897 ; 
+		padding-left: 5px;
+		margin:10px 0px 0px 10px;
+	}
+
+}

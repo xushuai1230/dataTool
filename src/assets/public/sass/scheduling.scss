@@ -1,0 +1,29 @@
+.commonTable {
+    .el-input--suffix .el-input__inner {
+        border: none;
+        height:26px;
+        line-height: 26px;
+        background: rgba(255,255,255,0)
+    }
+    .el-table td:hover{
+        background: rgba(64, 195, 255, 0.4)!important;
+    }
+    .el-input__icon{
+        line-height: 26px;
+    }
+    .el-form-item__content{
+        line-height: 26px;
+    }
+    .file-ipt .el-input__inner {
+        height:26px;
+        line-height: 26px;
+        padding: 0;
+        border:none;
+        background: rgba(255,255,255,0);
+        margin-top:-3px;
+    }
+    
+}
+.el-popper[x-placement^=bottom]{
+    margin:5px 0;
+}

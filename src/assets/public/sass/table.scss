@@ -1,0 +1,142 @@
+ .el-button--mini{
+  padding: 4px 7px;
+}
+ .el-table .cell {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 25px ;
+  }
+  .el-table th>.cell {
+    position: relative;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .el-table--border td {
+    border-right: 1px solid #e0e2e4;
+  }
+
+  .el-table td, .el-table th.is-leaf {
+    border-bottom: 1px solid #e0e2e4;
+  }
+  .el-table th {
+    padding: 2px 0;
+    border-right: 1px solid #e0e2e4;
+  }
+  .el-table .caret-wrapper {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 22px;
+    width: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+    overflow: initial;
+    position: relative;
+    float: right;
+  }
+  .el-table .sort-caret.descending {
+    border-top-color: #c0c4cc;
+    bottom: 0px;}
+    .el-table .sort-caret.ascending {
+      border-bottom-color: #c0c4cc;
+      top: 0px;
+    }
+  .el-table th {
+    padding: 2px 0;
+    min-width: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    position: relative;
+ }
+ .el-table td{
+   padding: 2px 0;
+    min-width: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    position: relative;
+ }
+ .el-table--border, .el-table--group {
+    /*border: none;*/
+}
+.gutter{
+  display: block !important;
+}
+
+ /*分页样式*/
+
+.pages{
+
+    position: absolute;
+    height: 36px;
+    bottom: 0px;
+    width: 100%;
+    text-align: right;
+    border-bottom: 1px solid #cccccc;
+    .el-input--mini .el-input__inner {
+      height: 22px;
+      line-height: 22px;
+   }
+}
+.el-pager li{
+  height: 22px;
+  line-height: 22px;
+  font-size: 12px;
+}
+.el-pagination {
+    white-space: nowrap;
+    padding: 4px;
+    color: #303133;
+    font-weight: 700;
+}
+.el-pagination span:not([class*=suffix]){
+  font-size: 12px !important;    
+  height: 22px;
+  line-height: 22px;
+}
+.el-pagination button{
+  font-size: 12px !important;    
+  height: 22px;
+  line-height: 22px;
+}
+.el-pagination__editor{
+    font-size: 12px !important;
+    height: 22px;
+}
+.el-pagination__editor.el-input .el-input__inner {
+    height: 22px;
+    margin-bottom: 5px;
+}
+.el-pagination .el-select .el-input .el-input__inner {
+    margin-bottom: 4px;
+}
+.el-pagination__sizes .el-input .el-input__inner{
+    font-size: 12px;
+}
+.el-pagination__total{
+    margin-right: 0px;
+}
+.paramsAlert{
+  .el-table .cell {
+     height: 30px; 
+  }
+  .el-input__inner{
+    margin-top: 0px;
+  }
+}
