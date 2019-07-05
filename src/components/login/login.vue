@@ -155,7 +155,7 @@ export default {
             this.loading = false;
             this.$message({
               type: "error",
-              message: "用户名或密码错误错误"
+              message: "用户名或密码错误"
             });
             this.resetVerify();
             //   this.changeImg();

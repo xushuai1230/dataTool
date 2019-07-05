@@ -32,6 +32,8 @@ import Demand                    from '../../demand/demand'
 import DB                        from '../../dbconfig/dbconfig'
 import dbEdit                    from '../../dbconfig/dbEdit'
 import dbAdd                    from '../../dbconfig/dbAdd'
+import Log                    from '../../DataMonitor/DataMonitor'
+import LogChart                    from '../../logMonitor/logmonitor'
   export default{
     components:{
       home,
@@ -43,7 +45,9 @@ import dbAdd                    from '../../dbconfig/dbAdd'
       Demand,                      //需求管理
       DB,                          //DB配置
       dbEdit,                       //DB编辑
-      dbAdd                         //DB新增
+      dbAdd,                         //DB新增      
+      Log,                          // 日志管理
+      LogChart                      //统计管理
     },
     data() {
       return{

@@ -6,6 +6,7 @@ import VueResource from 'vue-resource'
 import ElementUI from 'element-ui'
 import store from './vuex/store.js'
 import axios from "axios"
+import VCharts from 'v-charts'
 import 'babel-polyfill'
 /* CSS */
 import 'element-ui/lib/theme-chalk/index.css'
@@ -23,6 +24,7 @@ import qs from "qs";
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueResource)
+Vue.use(VCharts)
 Vue.prototype.$axios = axios;
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$common = common;
@@ -84,17 +86,33 @@ router.beforeEach(({
 // token是否失效，锁屏
 Vue.http.interceptors.push(function (request, next) {
   next(function (response) {
-    var result = JSON.parse(response.body);
-    if (result.code == -2) {
-      this.$message({
-        type: 'warning',
-        message: '因长时间未操作，请重新登录'
-      })
-      this.$store.dispatch("token", "");
-      this.$router.push({
-        name: Yukon.Route.Login
-      })
+    if (typeof (response.body) == 'object') {
+      var result = response.body;
+      if (result.code == -2) {
+        this.$message({
+          type: 'warning',
+          message: '因长时间未操作，请重新登录'
+        })
+        this.$store.dispatch("token", "");
+        this.$router.push({
+          name: Yukon.Route.Login
+        })
+      }
+    } else {
+
+      var result = JSON.parse(response.body);
+      if (result.code == -2) {
+        this.$message({
+          type: 'warning',
+          message: '因长时间未操作，请重新登录'
+        })
+        this.$store.dispatch("token", "");
+        this.$router.push({
+          name: Yukon.Route.Login
+        })
+      }
     }
+
     return response
   })
 })
@@ -103,7 +121,8 @@ let startApp = function () {
   axios.get(Yukon.Url.Config).then((res) => {
     Yukon.Url.Title = res.data.Title;
     Yukon.Url.Bus = res.data.Bus;
-    Yukon.Url.Tree = res.data.Tree + Yukon.Action.GetJsonData,
+    Yukon.Url.Tree = res.data.Bus + Yukon.Action.GetJsonData,
+    Yukon.Url.Log = res.data.Log + Yukon.Action.GetJsonData,
     Yukon.Action.GetJsonData = res.data.Bus + Yukon.Action.GetJsonData;
     Yukon.Action.SetJsonData = res.data.Bus + Yukon.Action.SetJsonData;
     Yukon.Action.Import = res.data.Bus + Yukon.Action.Import;

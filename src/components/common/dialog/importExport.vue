@@ -287,7 +287,7 @@ export default {
   }
   .dialogTop > ul {
     float: left;
-    width: 54%;
+    width: 56%;
   }
   .dialogTop > div {
     float: left;
@@ -296,20 +296,20 @@ export default {
     width: 100%;
   }
   .importIpt > li > span {
-    min-width: 69px;
+    min-width: 79px;
     height: 28px;
     float: left;
     line-height: 26px;
     border-radius: 3px 0 0 3px;
     margin-bottom: 8px;
-    padding-left: 10px;
+    text-align: center;
     border: 1px solid #dcdfe6;
     border-right: none;
     font-size: 12px;
     white-space: nowrap;
   }
   .importIpt > li > .el-select {
-    width: calc(100% - 69px);
+    width: calc(100% - 79px);
     height: 28px;
     float: left;
     border-radius: 0 3px 3px 0;

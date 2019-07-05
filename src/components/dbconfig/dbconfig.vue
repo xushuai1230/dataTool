@@ -124,7 +124,7 @@ export default {
             }
           )
           .then(res => {
-            console.log(res);
+            // console.log(res);
             var result = JSON.parse(res.body);
             if (result.code == 0) {
               this.$message({

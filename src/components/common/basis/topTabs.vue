@@ -8,7 +8,7 @@
       </el-tab-pane>-->
       <el-tab-pane
         v-for="(v,k) in tabItems"
-        :disabled='v.disabled'
+        :disabled="v.disabled"
         :key="v.name"
         :label="v.label"
         :name="v.name"
@@ -90,7 +90,7 @@ export default {
               this.tabItems[i].url = url;
               this.tabItems[i].Id = Id;
               this.tabItems[i].disabled = false;
-              if(key == 'home'){
+              if (key == "home") {
                 this.tabItems[i].disabled = true;
               }
             }
@@ -101,9 +101,9 @@ export default {
             label: label,
             url: url,
             Id: Id,
-             disabled:false
+            disabled: false
           };
-          if(key == 'home'){
+          if (key == "home") {
             obj.disabled = true;
           }
           this.tabItems.push(obj);
@@ -116,6 +116,7 @@ export default {
     },
     // 切换标签页
     changeTab(tab, editId) {
+      // console.log(tab, editId)
       this.currentTab = tab.name;
       this.refresh = false;
       this.url = tab.$attrs.url;
@@ -125,18 +126,24 @@ export default {
 
     // 关闭标签页
     closeTab(targetName) {
+      console.log(targetName,this.tabItems,this.currentTab)
       let tabs = this.tabItems;
-      let activeName = "";
-      tabs.forEach((tab, index) => {
-        if (tab.name === targetName) {
-          //删除选中前一个或是后一个
-          let nextTab = tabs[index + 1] || tabs[index - 1];
-          if (nextTab) {
-            activeName = nextTab.name;
-            this.url = nextTab.url; //给url重新赋值
+      let activeName = ""; 
+      if (this.currentTab == "" || this.currentTab == targetName) {
+        tabs.forEach((tab, index) => {
+          if (tab.name === targetName) {
+            //删除选中前一个或是后一个
+            let nextTab = tabs[index + 1] || tabs[index - 1];
+            if (nextTab) {
+              activeName = nextTab.name;
+              this.url = nextTab.url; //给url重新赋值
+            }
           }
-        }
-      });
+        });
+      } else {
+         activeName = this.currentTab;
+      }
+
       this.tabsValue = activeName;
       this.currentTab = activeName;
       this.tabItems = tabs.filter(tab => tab.name !== targetName); //这里是删除选中的tab的key

@@ -157,6 +157,7 @@ export default {
   methods: {
     handleClick(row) {
       this.cdtTableData.splice(row.$index, 1);
+      this.tempArr.splice(row.$index, 1);
     },
     btnCancel() {
       this.dialogVisible = false;
@@ -201,7 +202,7 @@ export default {
           }
         }
       }
-
+    //  console.log(this.cdtTableData)
       this.dialogVisible = false;
       this.$emit("DialogVisibleFalse", false);
     },
@@ -219,23 +220,30 @@ export default {
         } else {
           var temp = {
             filterCon: this.filterName + this.linklValue + this.cdtInput,
-            connector: this.dialogTableData.APSFilterEnum,
+            connector:['&&','||'],
             linkNmae: "&&",
             linkvalue: this.linklValue
           };
-
-          if (this.tempArr.indexOf(JSON.stringify(temp)) == -1) {
-            this.tempArr = [];
-            this.tempArr.push(JSON.stringify(temp));
+          if (this.tempArr.length > 0) {
+            var flag = true;
             for (var i = 0; i < this.tempArr.length; i++) {
-              this.cdtTableData.push(JSON.parse(this.tempArr[i]));
+              if (JSON.stringify(this.tempArr[i]) == JSON.stringify(temp)) {
+                flag = false;
+              }
+            }
+            if (flag) {
+              this.tempArr.push(temp);
+            } else {
+              this.$message({
+                type: "warning",
+                message: "已有此项内容"
+              });
             }
           } else {
-            this.$message({
-              type: "warning",
-              message: "已有此项内容"
-            });
+            this.tempArr.push(temp);
           }
+          this.cdtTableData = JSON.parse(JSON.stringify(this.tempArr));
+          
         }
       } else {
         if (this.linklValue == "" || this.cdtInput == "") {
@@ -253,7 +261,8 @@ export default {
             };
           } else {
             var temp = {
-              filterCon: this.filterName +','+ this.linklValue +','+ this.cdtInput,
+              filterCon:
+                this.filterName + "," + this.linklValue + "," + this.cdtInput,
               connector: this.dialogTableData.WCFFilterEnum,
               linkNmae: "AND",
               linkvalue: this.linklValue
@@ -298,7 +307,7 @@ export default {
 .cdtContent {
   /deep/ .dialogTop > ul {
     float: left;
-    width: 54%;
+    width: 56%;
     .el-input__inner {
       height: 26px !important;
       line-height: 26px !important;
@@ -322,20 +331,20 @@ export default {
     width: 100%;
   }
   .importIpt > li > span {
-    min-width: 69px;
+    min-width: 79px;
     height: 28px;
     float: left;
     line-height: 26px;
     border-radius: 3px 0 0 3px;
     margin-bottom: 8px;
-    padding-left: 10px;
+    text-align: center;
     border: 1px solid #dcdfe6;
     border-right: none;
     font-size: 12px;
     white-space: nowrap;
   }
   .importIpt > li > .el-select {
-    width: calc(100% - 69px);
+    width: calc(100% - 79px);
     height: 28px;
     float: left;
     border-radius: 0 3px 3px 0;
@@ -344,7 +353,7 @@ export default {
     font-size: 12px;
   }
   .importIpt > li > .el-input {
-    width: calc(100% - 69px);
+    width: calc(100% - 79px);
     height: 28px;
     float: left;
     border-radius: 0 3px 3px 0;

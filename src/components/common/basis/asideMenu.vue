@@ -3,16 +3,16 @@
     <el-col :span="24">
       <div class="logo" id="logo">{{title}}</div>
       <el-menu
-         default-active
-	      class="el-menu-vertical-demo"
-	      theme="dark" 
-	      :unique-opened="true"
-	      @open="handleOpen"
-	      @close="handleClose"
-	      background-color="#20222A"
-	      text-color="#fff"
-	      :collapse="isCollapse"
-	      active-text-color="#ffd04b"
+        default-active
+        class="el-menu-vertical-demo"
+        theme="dark"
+        :unique-opened="true"
+        @open="handleOpen"
+        @close="handleClose"
+        background-color="#20222A"
+        text-color="#fff"
+        :collapse="isCollapse"
+        active-text-color="#ffd04b"
       >
         <template v-for="(v,k) in compList">
           <!-- 有子元素显示 -->
@@ -53,8 +53,8 @@ export default {
     return {
       isCollapse: false, // false展开
       logoText: true,
-      compList: {},      // 菜单数据
-      title:Yukon.Url.Title
+      compList: {}, // 菜单数据
+      title: Yukon.Url.Title
     };
   },
   computed: {

@@ -7,8 +7,8 @@
         <el-table-column prop="Status" :show-overflow-tooltip="true" label="Status"></el-table-column>
       </el-table>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="btnCanel">取消</el-button>
-        <el-button type="primary" @click="btnSure">确定</el-button>
+        <el-button size="small" @click="btnCanel">取消</el-button>
+        <el-button size="small" type="primary" @click="btnSure">确定</el-button>
       </span>
     </el-dialog>
   </div>

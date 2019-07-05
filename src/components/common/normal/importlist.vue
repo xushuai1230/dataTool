@@ -53,7 +53,7 @@
                   id="upload-file"
                   @change="getFile(scope.row)"
                   style="position:absolute;left:120000px"
-                > -->
+                >-->
                 <el-input class="file-ipt" v-model="scope.row.ConnectionPath" placeholder/>
               </div>
               <el-select
@@ -188,12 +188,11 @@
       :exportTableData="exportTableData"
     ></exportDetail>
     <dbfiled
-    :DBdialogVisible="DBdialogVisible"
+      :DBdialogVisible="DBdialogVisible"
       v-on:DialogVisibleFalse="dbfiledClose"
       :tableData="dialogInterData"
-      v-if="DBdialogVisible">
-
-    </dbfiled>
+      v-if="DBdialogVisible"
+    ></dbfiled>
   </div>
 </template>
 <script>
@@ -204,7 +203,6 @@ import dbfiled from "../dialog/dbfiled";
 import importDetail from "../dialog/importDetail";
 import exportDetail from "../dialog/exportDetail";
 import { mapGetters } from "vuex";
-import qs from "qs";
 export default {
   props: ["operationTableName"],
   data() {
@@ -223,12 +221,12 @@ export default {
       cdtdialogVisible: false, //条件配置弹窗
       exportVisible: false, // 导出详情弹窗
       importVisible: false, // 导入详情弹窗
-      DBdialogVisible:false,// 选择文件弹窗
+      DBdialogVisible: false, // 选择文件弹窗
       totalItems: 0, //总条数
       pageSize: 20, //每页数据条数
       currentPage: 1, // 第几页
-
-      rowList: ""
+      rowList: "",
+      methodShow: false
     };
   },
   computed: {
@@ -236,10 +234,12 @@ export default {
   },
   created() {},
   mounted() {
-    this.getTableJsonData();
-     eventBus.$on("filterPath", (val)=>{
-        console.log(val)
-     });
+    eventBus.$on("filterPath", val => {
+      // console.log(val);
+    });
+    setTimeout(() => {
+      this.getTableJsonData();
+    }, 500);
   },
   components: {
     importExportDialog,
@@ -251,7 +251,7 @@ export default {
   methods: {
     // 序号
     indexMethod(index) {
-      return index + 1;
+      return (this.currentPage - 1) * this.pageSize + index + 1;
     },
     // 字段设置弹窗
     importDialogClose(val) {
@@ -268,7 +268,7 @@ export default {
       this.exportVisible = val;
     },
     dbfiledClose(val) {
-      this.DBdialogVisible = val
+      this.DBdialogVisible = val;
     },
     handleSizeChange(val) {
       this.pageSize = val;
@@ -298,88 +298,11 @@ export default {
         this.cdtdialogVisible = true;
         this.dialogInterData = row;
         this.dialogTableData = this.configData;
-      } 
-      else if (column.label == "链接字符串/文件路径") {
-         this.DBdialogVisible = true;
-          this.dialogInterData = row;
+      } else if (column.label == "链接字符串/文件路径") {
+        this.DBdialogVisible = true;
+        this.dialogInterData = row;
       }
     },
-    // getFile(row) {
-    //   console.log(
-    //     row,
-    //     this.$refs.filElem,
-    //     document.getElementById("#upload-file")
-    //   );
-    //   var obj = this.$refs.filElem;
-    //   //判断浏览器
-    //   var Sys = {};
-    //   var ua = navigator.userAgent.toLowerCase();
-    //   var s;
-    //   (s = ua.match(/msie ([\d.]+)/))
-    //     ? (Sys.ie = s[1])
-    //     : (s = ua.match(/firefox\/([\d.]+)/))
-    //     ? (Sys.firefox = s[1])
-    //     : (s = ua.match(/chrome\/([\d.]+)/))
-    //     ? (Sys.chrome = s[1])
-    //     : (s = ua.match(/opera.([\d.]+)/))
-    //     ? (Sys.opera = s[1])
-    //     : (s = ua.match(/version\/([\d.]+).*safari/))
-    //     ? (Sys.safari = s[1])
-    //     : 0;
-    //   var file_url = "";
-    //   if (Sys.ie <= "6.0") {
-    //     //ie5.5,ie6.0
-    //     file_url = obj.value;
-    //   } else if (Sys.ie >= "7.0") {
-    //     //ie7,ie8
-    //     obj.select();
-    //     obj.blur();
-    //     file_url = document.selection.createRange().text;
-    //   } else if (Sys.firefox) {
-    //     //fx
-    //     //file_url = document.getElementById("file").files[0].getAsDataURL();//获取的路径为FF识别的加密字符串
-    //     file_url = this.readFileFirefox(obj);
-    //   } else if (Sys.chrome) {
-    //     file_url = obj.value;
-    //   }
-    //   console.log(file_url);
-    // },
-    // //FX获取文件路径方法
-    // readFileFirefox(fileBrowser) {
-    //   try {
-    //     netscape.security.PrivilegeManager.enablePrivilege(
-    //       "UniversalXPConnect"
-    //     );
-    //   } catch (e) {
-    //     alert(
-    //       '无法访问本地文件，由于浏览器安全设置。为了克服这一点，请按照下列步骤操作：(1)在地址栏输入"about:config";(2) 右键点击并选择 New->Boolean; (3) 输入"signed.applets.codebase_principal_support" （不含引号）作为一个新的首选项的名称;(4) 点击OK并试着重新加载文件'
-    //     );
-    //     return;
-    //   }
-    //   var fileName = fileBrowser.value; //这一步就能得到客户端完整路径。下面的是否判断的太复杂，还有下面得到ie的也很复杂。
-    //   var file = Components.classes["@mozilla.org/file/local;1"].createInstance(
-    //     Components.interfaces.nsILocalFile
-    //   );
-    //   try {
-    //     // Back slashes for windows
-    //     file.initWithPath(fileName.replace(/\//g, "\\\\"));
-    //   } catch (e) {
-    //     if (e.result != Components.results.NS_ERROR_FILE_UNRECOGNIZED_PATH)
-    //       throw e;
-    //     alert(
-    //       "File '" +
-    //         fileName +
-    //         "' cannot be loaded: relative paths are not allowed. Please provide an absolute path to this file."
-    //     );
-    //     return;
-    //   }
-    //   if (file.exists() == false) {
-    //     alert("File '" + fileName + "' not found.");
-    //     return;
-    //   }
-
-    //   return file.path;
-    // },
     // 文件路径失去焦点
     connect(val) {
       this.dbChoose(val.row);
@@ -492,6 +415,7 @@ export default {
           var result = JSON.parse(response.body);
           if (result.code == 0) {
             this.configData = result.data;
+            // console.log(this.configData);
             this.tableData = result.data.Tables;
             for (var i = 0; i < this.tableData.length; i++) {
               this.tableData[
@@ -526,6 +450,7 @@ export default {
         Name: "save",
         PropertyValueMap: this.configData
       });
+      // console.log(saveParams);
       this.$http
         .post(
           Yukon.Action.SetJsonData,
@@ -650,6 +575,7 @@ export default {
           var result = JSON.parse(res.body);
           if (result.code == "0") {
             this.loading = false;
+            this.exportTableData = [];
             if (val == "export") {
               this.exportVisible = true;
             } else {

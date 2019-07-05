@@ -54,7 +54,7 @@ export default {
     ...mapGetters(["token"]) // 获取vuex的token
   },
   mounted() {
-    console.log(this.tableData);
+    // console.log(this.tableData);
   },
   methods: {
     btnCanel() {
@@ -67,7 +67,7 @@ export default {
       eventBus.$emit("filterPath", this.filterPath);
     },
     loadNode1(node, resolve) {
-      console.log(node);
+      // console.log(node);
       if (node.level === 0) {
         var filterParams = JSON.stringify({
           Name: "OpenFileDialog",
@@ -88,7 +88,7 @@ export default {
           )
           .then(res => {
             var result = JSON.parse(res.body);
-            console.log(result);
+            // console.log(result);
             if (result.code == 0) {
               return resolve(result.data);
             }
@@ -118,7 +118,7 @@ export default {
               }
             )
             .then(res => {
-              console.log(res);
+              // console.log(res);
               var result = JSON.parse(res.body);
               if (result.code == 0) {
                 return resolve(result.data);
@@ -130,7 +130,7 @@ export default {
         }, 500);
       }
       if (node.level > 1) {
-        console.log(node);
+        // console.log(node);
         setTimeout(() => {
           this.filterString = node.data.parent;
           var filterParams = JSON.stringify({
@@ -151,7 +151,7 @@ export default {
               }
             )
             .then(res => {
-              console.log(res);
+              // console.log(res);
               var result = JSON.parse(res.body);
               if (result.code == 0) {
                 return resolve(result.data);
